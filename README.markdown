@@ -16,6 +16,7 @@ The ruby-aaws gem assumes you have an Associates tracking code, and Product API 
 	
 	gem install kindle-highlights
 **Use**
+
 	require 'kindle-highlights'
 
 	# to create a new KindleHighlights object, give it your Amazon email address and password	
