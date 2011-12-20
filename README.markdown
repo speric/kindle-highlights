@@ -10,7 +10,11 @@ There's currently no Kindle API, so I built a scraper.
 * ruby-aaws
 * Mechanize
 
-The ruby-aaws gem assumes you have an Associates tracking code, and Product API credentials.  A handy guide for setting up the ruby-aaws gem can be found at [http://snippets.aktagon.com/snippets/413-How-to-access-Amazon-product-data-with-Ruby-AWS-and-the-Amazon-Associates-Web-Services-API](http://snippets.aktagon.com/snippets/413-How-to-access-Amazon-product-data-with-Ruby-AWS-and-the-Amazon-Associates-Web-Services-API).  The kindle-highlights gem depends on the ruby-aaws gem to grab data about the product from which the highlight came, and will not work without ruby-aaws being set up properly.
+The ruby-aaws gem assumes you have an Associates tracking code, and Product API credentials.  A handy guide for setting up the ruby-aaws gem can be found at:
+
+[http://snippets.aktagon.com/snippets/413-How-to-access-Amazon-product-data-with-Ruby-AWS-and-the-Amazon-Associates-Web-Services-API](http://snippets.aktagon.com/snippets/413-How-to-access-Amazon-product-data-with-Ruby-AWS-and-the-Amazon-Associates-Web-Services-API).
+
+The kindle-highlights gem depends on the ruby-aaws gem to grab data about the product from which the highlight came, and will not work without ruby-aaws being set up properly.
 
 **Install**
 	
@@ -33,12 +37,13 @@ The ruby-aaws gem assumes you have an Associates tracking code, and Product API 
 **Updates**
 
 * Added annotation_id to Highlight class (2011.12.20)
-* Added dependencies to Mechanize and ruby-aaws within gemspec
+* Added dependencies to Mechanize and ruby-aaws within gemspec (2011.12.20)
 
 **TODO**
 
-* Exception handling
 * Cache AWS Product API results to save time
+* Optimize Amazon API calls
 * Get all highlights; Amazon currently does an infinite-scroll at the page bottom which loads highlights dynamically.  Currently the gem only gets the first "page" of highlights.
+* Exception handling
 * Documentation
 * Tests
