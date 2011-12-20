@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'kindle-highlights'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.date        = '2011-12-20'
   s.summary     = "Kindle highlights"
   s.description = "Until there is a Kindle API, this will suffice."
@@ -8,4 +8,7 @@ Gem::Specification.new do |s|
   s.email       = 'eric@prudentiadigital.com'
   s.files       = ["lib/kindle-highlights.rb"]
   s.homepage    = 'https://github.com/speric/kindle-highlights'
+ 
+  s.add_runtime_dependency 'mechanize', '>= 2.0.1'
+  s.add_runtime_dependency 'ruby-aaws', '>= 0.7.0'
 end

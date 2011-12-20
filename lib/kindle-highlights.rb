@@ -6,7 +6,7 @@ require 'amazon/aws/search'
 include Amazon::AWS
 include Amazon::AWS::Search
 
-class KindleHighlights
+class KindleHighlight
 	attr_accessor :highlights
 	
 	def initialize(email_address, password)
@@ -29,7 +29,7 @@ class KindleHighlights
 	end
 end
 
-class KindleHighlights::Highlight
+class KindleHighlight::Highlight
 
 	attr_accessor :annotation_id, :asin, :author, :title, :content
 
