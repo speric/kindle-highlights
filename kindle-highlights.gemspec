@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name        = 'kindle-highlights'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2011-12-20'
-  s.summary     = "Get your Kindle highlights"
-  s.description = "Get your Kindle highlights"
+  s.summary     = "Kindle highlights"
+  s.description = "Until there is a Kindle API, this will suffice."
   s.authors     = ["Eric Farkas"]
   s.email       = 'eric@prudentiadigital.com'
   s.files       = ["lib/kindle-highlights.rb"]
