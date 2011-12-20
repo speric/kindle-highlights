@@ -38,7 +38,7 @@ The kindle-highlights gem depends on the ruby-aaws gem to grab data about the pr
 
 * Added annotation_id to Highlight class (2011.12.20)
 * Added dependencies to Mechanize and ruby-aaws within gemspec (2011.12.20)
-* Cache AWS Product API results in a Hash, keyed on ASIN, to save time
+* Cache AWS Product API results in a Hash, keyed on ASIN, to save time (2011.12.20)
 
 **TODO**
 
