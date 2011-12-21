@@ -48,7 +48,7 @@ class KindleHighlight::Highlight
     unless @@amazon_items.has_key?(asin)
       request = Request.new
       request.locale = 'us'
-      response = ResponseGroup.new('Medium')
+      response = ResponseGroup.new('Small')
       lookup = Amazon::AWS::ItemLookup.new('ASIN', {'ItemId' => asin, 'MerchantId' => 'Amazon'})
       amazon_item = request.search(lookup, response).item_lookup_response[0].items.item.first
       @@amazon_items[asin] = amazon_item
