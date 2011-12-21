@@ -45,7 +45,7 @@ class KindleHighlight::Highlight
   end
 
   def lookup_or_get_from_cache(asin)
-    unless @@amazon_items.has_key? (asin)
+    unless @@amazon_items.has_key?(asin)
       request = Request.new
       request.locale = 'us'
       response = ResponseGroup.new('Medium')
