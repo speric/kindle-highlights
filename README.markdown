@@ -36,13 +36,13 @@ The kindle-highlights gem depends on the ruby-aaws gem to grab data about the pr
 
 **Updates**
 
-* Added annotation_id to Highlight class (2011.12.20)
-* Added dependencies to Mechanize and ruby-aaws within gemspec (2011.12.20)
-* Cache AWS Product API results in a Hash, keyed on ASIN, to save time (2011.12.20)
+* Added annotation_id to Highlight class (0.0.3)
+* Added dependencies to Mechanize and ruby-aaws within gemspec (0.0.4)
+* Cache AWS Product API results in a Hash, keyed on ASIN, to save time (0.0.5)
+* Get Small response group from Amazon (0.0.5)
 
 **TODO**
 
-* Optimize Amazon API calls
 * Get all highlights; Amazon currently does an infinite-scroll at the page bottom which loads highlights dynamically.  Currently the gem only gets the first "page" of highlights.
 * Exception handling
 * Documentation
