@@ -1,2 +1,4 @@
 *.gem
 *.gemspec
+config/*.yml
+Rakefile
