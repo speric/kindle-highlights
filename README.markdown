@@ -22,7 +22,7 @@ gem install kindle-highlights
 ```
 
 **Use**
-```
+```ruby
 require 'kindle_highlights'
 
 # to create a new KindleHighlight object, give it your Amazon email address and password	
