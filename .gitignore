@@ -1,4 +1,4 @@
 *.gem
-*.gemspec
+.gemspec
 config/*.yml
 Rakefile
