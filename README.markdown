@@ -43,4 +43,4 @@ end
 * Added dependencies to Mechanize and ruby-aaws within gemspec (0.0.4)
 * Cache AWS Product API results in a Hash, keyed on ASIN, to save time (0.0.5)
 * Get Small response group from Amazon (0.0.5)
-* Set `user_agent_alias = 'Mac Safari'`, refactored directory and naming structure
+* Set `user_agent_alias = 'Mac Safari'`, refactored directory and naming structure (0.0.6)
