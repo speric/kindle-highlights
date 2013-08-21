@@ -1,9 +1,10 @@
 require 'rubygems'
 require 'mechanize'
-require 'amazon/aws'
-require 'amazon/aws/search'
-require 'kindle_highlights/kindle_highlight'
-require 'kindle_highlights/highlight'
+require 'json'
+require 'kindle_highlights/client'
 
-include Amazon::AWS
-include Amazon::AWS::Search
+module KindleHighlights  
+  
+  KINDLE_LOGIN_PAGE      = "http://kindle.amazon.com/login"
+  SIGNIN_FORM_IDENTIFIER = "signIn"
+end
