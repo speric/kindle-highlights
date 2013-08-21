@@ -20,7 +20,9 @@ require 'kindle_highlights'
 
 # pass in your Amazon credentials. Loads all your Kindle books on init, so might take a while                                                             
 kindle = KindleHighlights::Client.new("sgt.pepper@lonelyhearts.com", "mr_kite") 
-kindle.books
+
+# returns a hash of your books, keyed on the ASIN, with the title as value
+kindle.books #=>
 {
   "B002JCSCO8"=>"The Art of the Commonplace: The Agrarian Essays of Wendell Berry",
   "B0049SPHC0"=>"Calvinistic Concept of Culture, The",
@@ -36,8 +38,8 @@ kindle.books
   "B0026772N8"=>"Zen and the Art of Motorcycle Maintenance"
 }
 
-#get your highlights for a specific book
-kindle.highlights_for("B005CQ2ZE6")
+#get your highlights for a specific book by passing the ASIN
+kindle.highlights_for("B005CQ2ZE6") #=>
 [
   {
 	  "asin"=>"B005CQ2ZE6",
