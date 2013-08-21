@@ -40,26 +40,26 @@ kindle.books #=>
 kindle.highlights_for("B005CQ2ZE6") #=>
 [
   {
-	  "asin"=>"B005CQ2ZE6",
-	  "customerId"=>"...",
-	  "embeddedId"=>"From_the_Garden_to_the_City:420E805A",
-	  "endLocation"=>29591,
-	  "highlight"=>"One of the most dangerous things you can believe in this world is that technology is neutral.",
-	  "howLongAgo"=>"1 year ago",
-	  "startLocation"=>29496,
-	  "timestamp"=>1320901233000
+    "asin"=>"B005CQ2ZE6",
+    "customerId"=>"...",
+    "embeddedId"=>"From_the_Garden_to_the_City:420E805A",
+    "endLocation"=>29591,
+    "highlight"=>"One of the most dangerous things you can believe in this world is that technology is neutral.",
+    "howLongAgo"=>"1 year ago",
+    "startLocation"=>29496,
+    "timestamp"=>1320901233000
   },
-	{
-		"asin"=>"B005CQ2ZE6",
-		"customerId"=>"...",                                    
-		"embeddedId"=>"From_the_Garden_to_the_City:420E805A",
-		"endLocation"=>54220,
-		"highlight"=>"While God's words are eternal and unchanging, the tools we use to access those words do change, and those changes in technology also bring subtle changes to the practice of worship. When we fail to recognize the impact of such technological change, we run the risk of allowing our tools to dictate our methods. Technology should not dictate our values or our methods. Rather, we must use technology out of our convictions and values.",
-		"howLongAgo"=>"1 year ago",
-		"startLocation"=>53780,
-		"timestamp"=>1321038422000
-	}
-}	
+  {
+    "asin"=>"B005CQ2ZE6",
+    "customerId"=>"...",                                    
+    "embeddedId"=>"From_the_Garden_to_the_City:420E805A",
+    "endLocation"=>54220,
+    "highlight"=>"While God's words are eternal and unchanging, the tools we use to access those words do change, and those changes in technology also bring subtle changes to the practice of worship. When we fail to recognize the impact of such technological change, we run the risk of allowing our tools to dictate our methods. Technology should not dictate our values or our methods. Rather, we must use technology out of our convictions and values.",
+    "howLongAgo"=>"1 year ago",
+    "startLocation"=>53780,
+    "timestamp"=>1321038422000
+  }
+]	
 ```                                                    
 
 ###TODO
