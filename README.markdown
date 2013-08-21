@@ -16,7 +16,7 @@ gem install kindle-highlights
 ```ruby
 require 'kindle_highlights'
 
-# pass in your Amazon credentials. Loads all your Kindle books (not highlights) on init, so might take a while                                                             
+# pass in your Amazon credentials. Loads your books (not highlights) on init, so might take a while                                                             
 kindle = KindleHighlights::Client.new("sgt.pepper@lonelyhearts.com", "mr_kite") 
 
 # returns a hash of your books, keyed on the ASIN, with the title as value
