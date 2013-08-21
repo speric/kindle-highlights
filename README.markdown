@@ -7,16 +7,16 @@ There's currently no Kindle API, so I built a scraper.
                                   
 If you're looking for an older version of this gem, check out v0.0.7 at [https://github.com/speric/kindle-highlights/tree/v0.0.7](https://github.com/speric/kindle-highlights/tree/v0.0.7)
 
-**Required gems**
+###Required gems
 
-* mechanize (2.7.2)
+* [https://github.com/sparklemotion/mechanize](mechanize) (2.7.2)
 
-**Install**
+###Install
 ```
 gem install kindle-highlights
 ```
 
-**Use**
+###Use
 ```ruby
 require 'kindle_highlights'
 
@@ -64,10 +64,20 @@ kindle.highlights_for("B005CQ2ZE6")
 }	
 ```                                                    
 
-**TODO**
+###TODO
 * Documentation
 * Tests            
 
-**Contribute**
+## Contributing to kindle-highlights
 
-My goal here was to make something lightweight and useful. If you have ideas for making it better, fork the project, improve it, and submit a PR. Pull requests are very much welcome.
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the [issue tracker](http://github.com/speric/kindle-highlights/issues) to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for the feature/bugfix. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate it to its own commit so I can cherry-pick around it.
+
+## Copyright
+
+Copyright (c) 2011-2013 Eric Farkas. See MIT-LICENSE for details.
