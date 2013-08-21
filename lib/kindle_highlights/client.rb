@@ -3,8 +3,9 @@ module KindleHighlights
     attr_reader :books
         
     def initialize(email_address, password)
-      @email_address   = email_address
-      @password        = password
+      @email_address = email_address
+      @password      = password
+      @books         = Hash.new
       
       setup_mechanize_agent
       load_books_from_kindle_account
@@ -19,7 +20,6 @@ module KindleHighlights
     private
    
     def load_books_from_kindle_account
-      @books = Hash.new
       signin_page = @mechanize_agent.get(KINDLE_LOGIN_PAGE)
       
       signin_form = signin_page.form(SIGNIN_FORM_IDENTIFIER)
@@ -30,10 +30,10 @@ module KindleHighlights
       highlights_page = @mechanize_agent.click(kindle_logged_in_page.link_with(:text => /Your Books/))
 
       loop do
-        books = highlights_page.search(".//td[@class='titleAndAuthor']")
-        books.each do |book|
-          asin = book.search("a").first.attributes["href"].value.split("/").last
-          title = book.search("a").first.inner_html
+        highlights_page.search(".//td[@class='titleAndAuthor']").each do |book|
+          asin_and_title_element = book.search("a").first
+          asin = asin_and_title_element.attributes["href"].value.split("/").last
+          title = asin_and_title_element.inner_html
           @books[asin] = title
         end
         break if highlights_page.link_with(text: /Next/).nil?
