@@ -1,15 +1,13 @@
 kindle-highlights
 ============
 
-*Get your Kindle highlights via Amazon's Kindle site*
-
 There's currently no Kindle API, so I built a scraper.
                                   
 If you're looking for an older version of this gem, check out v0.0.7 at [https://github.com/speric/kindle-highlights/tree/v0.0.7](https://github.com/speric/kindle-highlights/tree/v0.0.7)
 
 ###Required gems
 
-* [https://github.com/sparklemotion/mechanize](mechanize) (2.7.2)
+* [mechanize](https://github.com/sparklemotion/mechanize) (2.7.2)
 
 ###Install
 ```
