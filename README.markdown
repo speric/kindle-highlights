@@ -3,8 +3,6 @@ kindle-highlights
 
 There's currently no Kindle API, so I built a scraper.
                                   
-If you're looking for an older version of this gem, check out v0.0.7 at [https://github.com/speric/kindle-highlights/tree/v0.0.7](https://github.com/speric/kindle-highlights/tree/v0.0.7)
-
 ###Required gems
 
 * [mechanize](https://github.com/sparklemotion/mechanize) (2.7.2)
@@ -18,7 +16,7 @@ gem install kindle-highlights
 ```ruby
 require 'kindle_highlights'
 
-# pass in your Amazon credentials. Loads all your Kindle books on init, so might take a while                                                             
+# pass in your Amazon credentials. Loads all your Kindle books (not highlights) on init, so might take a while                                                             
 kindle = KindleHighlights::Client.new("sgt.pepper@lonelyhearts.com", "mr_kite") 
 
 # returns a hash of your books, keyed on the ASIN, with the title as value
@@ -68,7 +66,7 @@ kindle.highlights_for("B005CQ2ZE6") #=>
 * Documentation
 * Tests            
 
-## Contributing to kindle-highlights
+## Contributing to kindle-highlights (PR's welcome)
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the [issue tracker](http://github.com/speric/kindle-highlights/issues) to make sure someone already hasn't requested it and/or contributed it
