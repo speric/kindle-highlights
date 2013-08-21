@@ -20,13 +20,9 @@ gem install kindle-highlights
 ```ruby
 require 'kindle_highlights'
 
-# pass in your Amazon credentials
-# loads all your Kindle books on init, so might take a while                                                             
+# pass in your Amazon credentials. Loads all your Kindle books on init, so might take a while                                                             
 kindle = KindleHighlights::Client.new("sgt.pepper@lonelyhearts.com", "mr_kite") 
-
-kindle.books #returns a hash, keyed on the book's ASIN, with the title as the value
-
-/
+kindle.books
 {
   "B002JCSCO8"=>"The Art of the Commonplace: The Agrarian Essays of Wendell Berry",
   "B0049SPHC0"=>"Calvinistic Concept of Culture, The",
@@ -41,11 +37,9 @@ kindle.books #returns a hash, keyed on the book's ASIN, with the title as the va
   "B0032UWX1O"=>"The Westminster Confession of Faith",
   "B0026772N8"=>"Zen and the Art of Motorcycle Maintenance"
 }
-/
 
 #get your highlights for a specific book
 kindle.highlights_for("B005CQ2ZE6")
-
 [
   {
 	  "asin"=>"B005CQ2ZE6",
@@ -75,4 +69,5 @@ kindle.highlights_for("B005CQ2ZE6")
 * Tests            
 
 **Contribute**
+
 My goal here was to make something lightweight and useful. If you have ideas for making it better, fork the project, improve it, and submit a PR. Pull requests are very much welcome.
