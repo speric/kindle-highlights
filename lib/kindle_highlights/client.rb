@@ -27,7 +27,7 @@ module KindleHighlights
       signin_form.password = @password
       
       kindle_logged_in_page = @mechanize_agent.submit(signin_form)
-      highlights_page = @mechanize_agent.click(kindle_logged_in_page.link_with(:text => /Your Books/))
+      highlights_page = @mechanize_agent.click(kindle_logged_in_page.link_with(text: /Your Books/))
 
       loop do
         highlights_page.search(".//td[@class='titleAndAuthor']").each do |book|
