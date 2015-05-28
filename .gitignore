@@ -2,3 +2,4 @@
 .gemspec
 config/*.yml
 Rakefile
+.DS_Store
