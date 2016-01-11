@@ -1,5 +1,8 @@
 module KindleHighlights
   class Client
+    # Number of highlights to fetch at once from the Kindle API. Over 250 or so and the endpoint starts 500'ing.
+    BATCH_SIZE = 200
+
     attr_reader :books
         
     def initialize(email_address, password)
@@ -12,9 +15,18 @@ module KindleHighlights
     end
   
     def highlights_for(asin)
-      highlights = @mechanize_agent.get("https://kindle.amazon.com/kcw/highlights?asin=#{asin}&cursor=0&count=1000")
-      json       = JSON.parse(highlights.body)
-      json["items"]
+      cursor = 0
+      highlights = []
+
+      loop do
+        # This endpoint includes a `hasMore` field. Unfortunately at the time of this writing is always false.
+        page = @mechanize_agent.get("https://kindle.amazon.com/kcw/highlights?asin=#{asin}&cursor=#{cursor}&count=#{BATCH_SIZE}")
+        json = JSON.parse(page.body)
+        break unless json['items'] and json['items'].length > 0
+        highlights.concat(json['items'])
+        cursor += BATCH_SIZE
+      end
+      highlights
     end
     
     private
