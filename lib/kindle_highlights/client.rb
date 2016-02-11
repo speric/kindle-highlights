@@ -38,7 +38,17 @@ module KindleHighlights
       signin_form.email     = @email_address
       signin_form.password  = @password
       kindle_logged_in_page = @mechanize_agent.submit(signin_form)
-      highlights_page       = @mechanize_agent.click(kindle_logged_in_page.link_with(text: /Your Books/))
+      begin
+        highlights_page     = @mechanize_agent.click(kindle_logged_in_page.link_with(text: /Your Books/))
+      rescue NoMethodError
+        # Check if we got a captcha
+        captcha_match = kindle_logged_in_page.search("#ap_captcha_img")
+        if captcha_match.length > 0 then
+          abort("\nReceived a CAPTCHA. You will need to resolve this manually.\n\n")
+        else
+          raise
+        end
+      end
 
       loop do
         highlights_page.search(".//td[@class='titleAndAuthor']").each do |book|
