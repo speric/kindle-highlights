@@ -12,8 +12,8 @@ gem install kindle-highlights
 ```ruby
 require 'kindle_highlights'
 
-# pass in your Amazon credentials. Loads your books (not highlights)
-# on init, so might take a while
+# pass in your Amazon credentials. Loads your books
+# (not highlights) on init, so might take a while
 kindle = KindleHighlights::Client.new("email.address@gmail.com", "password")
 
 # returns a hash of your books, keyed on the ASIN, with the title as value
@@ -62,7 +62,7 @@ kindle.highlights_for("B005CQ2ZE6") #=>
 ### In The Wild
 * [tobi/highlights](https://github.com/tobi/highlights) - Download your Kindle highlights and email random ones to your inbox
 
-### Contributing to kindle-highlights (PR's welcome)
+### Contributing to kindle-highlights (PRs welcome)
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the [issue tracker](http://github.com/speric/kindle-highlights/issues) to make sure someone already hasn't requested it and/or contributed it
@@ -74,4 +74,4 @@ kindle.highlights_for("B005CQ2ZE6") #=>
 
 ### Copyright
 
-Copyright (c) 2011-2015 Eric Farkas. See MIT-LICENSE for details.
+Copyright (c) 2011-2016 Eric Farkas. See MIT-LICENSE for details.
