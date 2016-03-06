@@ -3,7 +3,7 @@ kindle-highlights
 
 A Ruby gem for collecting your Kindle highlights.
 
-### Install
+### Installation
 ```
 gem install kindle-highlights
 ```
@@ -72,10 +72,10 @@ gem install kindle-highlights
   ]
   ```
 
-### In The Wild
+### Alternatives
 * [tobi/highlights](https://github.com/tobi/highlights) - Download your Kindle highlights and email random ones to your inbox
 
-### Contributing to kindle-highlights (PR's welcome)
+### Contributing to kindle-highlights (PRs welcome)
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the [issue tracker](http://github.com/speric/kindle-highlights/issues) to make sure someone already hasn't requested it and/or contributed it
