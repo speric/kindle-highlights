@@ -32,6 +32,7 @@ kindle.books #=>
   "B0032UWX1O" => "The Westminster Confession of Faith",
   "B0026772N8" => "Zen and the Art of Motorcycle Maintenance"
 }
+# To generate human readible output as seen in the preceding example, refer to [Best way to pretty print a hash]( http://stackoverflow.com/questions/8842546/best-way-to-pretty-print-a-hash).
 
 # get your highlights for a specific book by passing the ASIN
 kindle.highlights_for("B005CQ2ZE6") #=>
