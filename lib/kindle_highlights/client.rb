@@ -5,12 +5,12 @@ module KindleHighlights
 
     attr_reader :books
         
-    def initialize(email_address, password)
+    def initialize(email_address, password, **mechanize_kwargs)
       @email_address = email_address
       @password      = password
       @books         = Hash.new
       
-      setup_mechanize_agent
+      setup_mechanize_agent(mechanize_kwargs)
       load_books_from_kindle_account
     end
   
@@ -38,7 +38,17 @@ module KindleHighlights
       signin_form.email     = @email_address
       signin_form.password  = @password
       kindle_logged_in_page = @mechanize_agent.submit(signin_form)
-      highlights_page       = @mechanize_agent.click(kindle_logged_in_page.link_with(text: /Your Books/))
+      begin
+        highlights_page     = @mechanize_agent.click(kindle_logged_in_page.link_with(text: /Your Books/))
+      rescue NoMethodError
+        # Check if we got a captcha
+        captcha_match = kindle_logged_in_page.search("#ap_captcha_img")
+        if captcha_match.length > 0 then
+          abort("\nReceived a CAPTCHA. You will need to resolve this manually.\n\n")
+        else
+          raise
+        end
+      end
 
       loop do
         highlights_page.search(".//td[@class='titleAndAuthor']").each do |book|
@@ -52,10 +62,15 @@ module KindleHighlights
       end
     end
     
-    def setup_mechanize_agent
+    def setup_mechanize_agent(mechanize_options)
       @mechanize_agent                        = Mechanize.new
       @mechanize_agent.user_agent_alias       = 'Windows Mozilla'
       @mechanize_agent.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      # Override default settings using mechanize_options
+      mechanize_options.each do |mech_attr, value|
+        @mechanize_agent.send("#{mech_attr}=", value)
+      end
     end
   end
 end
