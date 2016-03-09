@@ -18,7 +18,7 @@ gem install kindle-highlights
 
    `kindle = KindleHighlights::Client.new("email.address@gmail.com", "password")`
    
-   This might take a while.
+   This fetches information for all Kindle books, and therefore might take a while.
    
 1. Get each book (where the key is the [ASIN](http://www.amazon.com/gp/seller/asin-upc-isbn-info.html)), and its corresponding title:
 
