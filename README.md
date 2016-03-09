@@ -25,7 +25,7 @@ gem install kindle-highlights
    `kindle.books`
    
    Example output is as follows:
-    ```
+    ```ruby
   {
     "B002JCSCO8" => "The Art of the Commonplace: The Agrarian Essays of Wendell Berry",
     "B0049SPHC0" => "Calvinistic Concept of Culture, The",
@@ -47,7 +47,7 @@ gem install kindle-highlights
   
   Example output is as follows:
 
-  ```
+  ```ruby
   [
     {
       "asin"          => "B005CQ2ZE6",
