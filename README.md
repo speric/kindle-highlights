@@ -10,7 +10,7 @@ gem install kindle-highlights
 
 ### Usage
 
-1. In an interactive Ruby shell ([`irb`](http://ruby-doc.org/stdlib-2.0.0/libdoc/irb/rdoc/IRB.html)), run the first of several commands:
+1. Load the library:
 
    `require 'kindle_highlights'`
 
