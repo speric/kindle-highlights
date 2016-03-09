@@ -72,8 +72,8 @@ gem install kindle-highlights
   ]
   ```
 
-### Alternatives
-* [tobi/highlights](https://github.com/tobi/highlights) - Download your Kindle highlights and email random ones to your inbox
+### Projects that use kindle-highlights
+* [tobi/highlights](https://github.com/tobi/highlights) - Download your Kindle highlights and email random ones to your inbox.
 
 ### Contributing to kindle-highlights (PRs welcome)
 
