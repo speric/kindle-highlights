@@ -1,7 +1,17 @@
-kindle-highlights
-============
+## kindle-highlights
+
+[![build status](https://secure.travis-ci.org/speric/kindle-highlights.png)](http://travis-ci.org/speric/kindle-highlights)
 
 A Ruby gem for collecting your Kindle highlights.
+
+### Requirements
+
+* Ruby `2.1.0` or greater
+* An Amazon Kindle account
+
+<b>Note:</b> Version `0.0.8` of `kindle-highlights` is the last version which is compatible with older
+versions of Ruby. For documentation on how to use that
+version, see [the release](https://github.com/speric/kindle-highlights/releases/tag/v0.0.8).
 
 ### Install
 ```
@@ -12,12 +22,17 @@ gem install kindle-highlights
 ```ruby
 require 'kindle_highlights'
 
-# pass in your Amazon credentials. Loads your books
-# (not highlights) on init, so might take a while
-kindle = KindleHighlights::Client.new("email.address@gmail.com", "password")
+# Initialize a new client by passing in the email address & # password you use
+# to sign into your Amazon Kindle account. The client signs into your Amazon
+# account on initialization, which takes a few seconds.
 
-# returns a hash of your books, keyed on the ASIN, with the title as value
-kindle.books #=>
+kindle = KindleHighlights::Client.new(email_address: "email.address@gmail.com", password: "password")
+
+# Use the `books` method to get a listing of all your Kindle books. This method
+# returns a hash, keyed on the ASIN, with the title as the value:
+
+kindle.books
+#=>
 {
   "B002JCSCO8" => "The Art of the Commonplace: The Agrarian Essays of Wendell Berry",
   "B0049SPHC0" => "Calvinistic Concept of Culture, The",
@@ -33,8 +48,11 @@ kindle.books #=>
   "B0026772N8" => "Zen and the Art of Motorcycle Maintenance"
 }
 
-# get your highlights for a specific book by passing the ASIN
-kindle.highlights_for("B005CQ2ZE6") #=>
+# To get only the highlights for a specific book, use the `highlights_for` method, passing
+# in the book's Amazon ASIN as the only method parameter:
+
+kindle.highlights_for("B005CQ2ZE6")
+#=>
 [
   {
     "asin"          => "B005CQ2ZE6",
@@ -57,6 +75,18 @@ kindle.highlights_for("B005CQ2ZE6") #=>
     "timestamp"     => 1321038422000
   }
 ]
+```
+
+### Advanced Usage
+
+This gem uses [mechanize](https://github.com/sparklemotion/mechanize) to interact with Amazon's Kindle pages. You can override any of the default mechanize settings (see `lib/kindle_highlights/client.rb`) by passing your settings to the initializer:
+
+```ruby
+kindle = KindleHighlights::Client.new(
+  email_address: "me@example.com",
+  password: "amazon_password",
+  mechanize_options: { user_agent_alias: 'Mac Safari' }
+)
 ```
 
 ### In The Wild
