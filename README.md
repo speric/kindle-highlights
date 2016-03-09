@@ -40,7 +40,7 @@ gem install kindle-highlights
     "B0026772N8" => "Zen and the Art of Motorcycle Maintenance"
   }
     ```
-1. (Optional) If you are not sure how to produce human-readable output as in the preceding example, refer to [Best way to pretty print a hash]( http://stackoverflow.com/questions/8842546/best-way-to-pretty-print-a-hash).
+
 1. Get your highlights for a specific book by using its ASIN:
 
   `kindle.highlights_for("B005CQ2ZE6")`
