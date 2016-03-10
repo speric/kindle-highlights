@@ -19,18 +19,22 @@ gem install kindle-highlights
 ```
 
 ### Use
+
+First, `require` the gem and initialize a new client by passing in the email address & password you use
+to sign into your Amazon Kindle account:
+
 ```ruby
 require 'kindle_highlights'
 
-# Initialize a new client by passing in the email address & # password you use
-# to sign into your Amazon Kindle account. The client signs into your Amazon
-# account on initialization, which takes a few seconds.
-
 kindle = KindleHighlights::Client.new(email_address: "email.address@gmail.com", password: "password")
+```
 
-# Use the `books` method to get a listing of all your Kindle books. This method
-# returns a hash, keyed on the ASIN, with the title as the value:
+### Fetching a list of your Kindle books
 
+Use the `books` method to get a listing of all your Kindle books. This method
+returns a hash, keyed on the ASIN, with the title as the value:
+
+```ruby
 kindle.books
 #=>
 {
@@ -47,10 +51,14 @@ kindle.books
   "B0032UWX1O" => "The Westminster Confession of Faith",
   "B0026772N8" => "Zen and the Art of Motorcycle Maintenance"
 }
+```
 
-# To get only the highlights for a specific book, use the `highlights_for` method, passing
-# in the book's Amazon ASIN as the only method parameter:
+### Fetching all highlights for a single book
 
+To get only the highlights for a specific book, use the `highlights_for` method, passing
+in the book's Amazon ASIN as the only method parameter:
+
+```ruby
 kindle.highlights_for("B005CQ2ZE6")
 #=>
 [
@@ -86,6 +94,32 @@ kindle = KindleHighlights::Client.new(
   email_address: "me@example.com",
   password: "amazon_password",
   mechanize_options: { user_agent_alias: 'Mac Safari' }
+)
+```
+
+### A Note About CAPTCHAs
+
+Amazon will sometimes issue a CAPTCHA challenge when logging in to your
+Kindle account. If this happens when the gem attempts to log in to your
+Kindle account to retrieve your book list or highlights via this gem, you'll get a `KindleHighlights::Client::CaptchaError`, like the following:
+
+```ruby
+> kindle.books
+KindleHighlights::Client::CaptchaError: Received a CAPTCHA while attempting to sign in to your Amazon account. You will need to resolve this manually at https://www.amazon.com/ap/signin?openid.pape.max_auth_age=0&openid...
+```
+
+There's no way to programmatically resolve this situation. The best
+solution I've found is to open a browser, visit the URL that the gem returns, log in to
+your Kindle account, and click around a bit. Then log out of your Kindle
+account and re-attempt to fetch your highlights via this gem. Additionally, you could try
+instantiating a new instance of the client and changing the User-Agent
+via `mechanize_options` like:
+
+```ruby
+kindle = KindleHighlights::Client.new(
+  email_address: "me@example.com",
+  password: "amazon_password",
+  mechanize_options: { user_agent_alias: 'iPhone' }
 )
 ```
 
