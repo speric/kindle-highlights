@@ -7,9 +7,10 @@ Gem::Specification.new do |s|
   s.email       = "eric@prudentiadigital.com"
   s.files       = ["lib/kindle_highlights.rb", "lib/kindle_highlights/client.rb"]
   s.homepage    = "https://github.com/speric/kindle-highlights"
+  s.license     = "MIT"
 
-  s.required_ruby_version = ">= 1.9.3"
-  
+  s.required_ruby_version = ">= 2.1.0"
+
   s.add_runtime_dependency "mechanize", ">= 2.7.2"
   s.add_development_dependency "rake"
   s.add_development_dependency "bundler",  "~> 1.3"
