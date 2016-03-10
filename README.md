@@ -12,17 +12,23 @@ gem install kindle-highlights
 
 1. Load the library:
 
-   `require 'kindle_highlights'`
+   ```
+   require 'kindle_highlights'
+   ```
 
 1. Provide your Amazon credentials to access your book titles:
 
-   `kindle = KindleHighlights::Client.new("email.address@gmail.com", "password")`
+   ```
+   kindle = KindleHighlights::Client.new("email.address@gmail.com", "password")
+   ```
    
    This fetches information for all Kindle books, and therefore might take a while.
    
 1. Get each book (where the key is the [ASIN](http://www.amazon.com/gp/seller/asin-upc-isbn-info.html)), and its corresponding title:
 
-   `kindle.books`
+   ```
+   kindle.books
+   ```
    
    Example output is as follows:
     ```ruby
