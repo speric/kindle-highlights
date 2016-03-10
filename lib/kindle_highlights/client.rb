@@ -44,10 +44,13 @@ module KindleHighlights
         signin_form            = signin_page.form(SIGNIN_FORM_IDENTIFIER)
         signin_form.email      = email_address
         signin_form.password   = password
-        @kindle_logged_in_page = mechanize_agent.submit(signin_form)
+        post_signin_page       = mechanize_agent.submit(signin_form)
 
-        if @kindle_logged_in_page.search("#ap_captcha_img").any?
-          raise CaptchaError, "Received a CAPTCHA while attempting to sign in to your Amazon account. You will need to resolve this manually."
+        if post_signin_page.search("#ap_captcha_img").any?
+          resolution_url = post_signin_page.link_with(text: /See a new challenge/).resolved_uri.to_s
+          raise CaptchaError, "Received a CAPTCHA while attempting to sign in to your Amazon account. You will need to resolve this manually at #{resolution_url}"
+        else
+          @kindle_logged_in_page = post_signin_page
         end
       end
     end
@@ -78,7 +81,7 @@ module KindleHighlights
 
     def initialize_mechanize_agent
       mechanize_agent                        = Mechanize.new
-      mechanize_agent.user_agent_alias       = 'Mac Safari'
+      mechanize_agent.user_agent_alias       = 'Windows Mozilla'
       mechanize_agent.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       mechanize_options.each do |mech_attr, value|
