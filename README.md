@@ -101,7 +101,7 @@ kindle = KindleHighlights::Client.new(
 
 Amazon will sometimes issue a CAPTCHA challenge when logging in to your
 Kindle account. If this happens when the gem attempts to log in to your
-Kindle account to retrieve your book list or highlights via this gem, you'll get a `KindleHighlights::Client::CaptchaError`, like the following:
+Kindle account to retrieve your book list or highlights, you'll get a `KindleHighlights::Client::CaptchaError`, like the following:
 
 ```ruby
 > kindle.books
