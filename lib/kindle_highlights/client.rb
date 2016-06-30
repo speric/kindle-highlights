@@ -1,6 +1,7 @@
 module KindleHighlights
   class Client
     class CaptchaError < StandardError; end
+    class AuthenticationError < StandardError; end
 
     attr_writer :mechanize_agent
     attr_accessor :kindle_logged_in_page
@@ -49,6 +50,9 @@ module KindleHighlights
         if post_signin_page.search("#ap_captcha_img").any?
           resolution_url = post_signin_page.link_with(text: /See a new challenge/).resolved_uri.to_s
           raise CaptchaError, "Received a CAPTCHA while attempting to sign in to your Amazon account. You will need to resolve this manually at #{resolution_url}"
+        elsif post_signin_page.search("#message_error > p").any?
+          amazon_error = post_signin_page.search("#message_error > p").children.first.to_s.strip
+          raise AuthenticationError, "Unable to sign in, received error: '#{amazon_error}'"
         else
           @kindle_logged_in_page = post_signin_page
         end
