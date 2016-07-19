@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "kindle-highlights"
-  s.version     = "1.0.0"
+  s.version     = "1.0.1"
   s.summary     = "Kindle highlights"
   s.description = "Until there is a Kindle API, this will suffice."
   s.authors     = ["Eric Farkas"]
