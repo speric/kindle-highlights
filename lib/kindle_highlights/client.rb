@@ -85,7 +85,7 @@ module KindleHighlights
 
     def initialize_mechanize_agent
       mechanize_agent                        = Mechanize.new
-      mechanize_agent.user_agent_alias       = 'Windows Mozilla'
+      mechanize_agent.user_agent_alias       = Mechanize::AGENT_ALIASES.keys.grep(/\A(Linux|Mac|Windows)/).sample
       mechanize_agent.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       mechanize_options.each do |mech_attr, value|
