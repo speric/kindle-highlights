@@ -3,6 +3,8 @@ module KindleHighlights
     class CaptchaError < StandardError; end
     class AuthenticationError < StandardError; end
 
+    MAX_AUTH_RETRIES = 2
+
     attr_writer :mechanize_agent
     attr_accessor :kindle_logged_in_page
 
@@ -40,6 +42,8 @@ module KindleHighlights
     attr_accessor :email_address, :password, :mechanize_options
 
     def conditionally_sign_in_to_amazon
+      retries ||= 0
+
       if @kindle_logged_in_page.nil?
         signin_page            = mechanize_agent.get(KINDLE_LOGIN_PAGE)
         signin_form            = signin_page.form(SIGNIN_FORM_IDENTIFIER)
@@ -57,6 +61,8 @@ module KindleHighlights
           @kindle_logged_in_page = post_signin_page
         end
       end
+    rescue AuthenticationError
+      retry unless (retries += 1) == MAX_AUTH_RETRIES
     end
 
     def load_books_from_kindle_account
