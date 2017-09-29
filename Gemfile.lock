@@ -1,40 +1,38 @@
 PATH
   remote: .
   specs:
-    kindle-highlights (1.0.1)
+    kindle-highlights (1.0.2)
       mechanize (>= 2.7.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    domain_name (0.5.20160615)
+    domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
-    http-cookie (1.0.2)
+    http-cookie (1.0.3)
       domain_name (~> 0.5)
-    mechanize (2.7.4)
+    mechanize (2.7.3)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0)
-      mime-types (>= 1.17.2, < 3)
+      mime-types (~> 2.0)
       net-http-digest_auth (~> 1.1, >= 1.1.1)
       net-http-persistent (~> 2.5, >= 2.5.2)
-      nokogiri (~> 1.6)
+      nokogiri (~> 1.4)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
-    mime-types (2.99.1)
-    mini_portile2 (2.1.0)
+    mime-types (2.99)
+    mini_portile2 (2.2.0)
     minitest (5.8.4)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
-    nokogiri (1.6.8)
-      mini_portile2 (~> 2.1.0)
-      pkg-config (~> 1.1.7)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
     ntlm-http (0.1.1)
-    pkg-config (1.1.7)
     rake (10.5.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.2)
-    webrobots (0.1.2)
+    unf_ext (0.0.7.4)
+    webrobots (0.1.1)
 
 PLATFORMS
   ruby
@@ -46,4 +44,4 @@ DEPENDENCIES
   rake
 
 BUNDLED WITH
-   1.10.6
+   1.15.3
