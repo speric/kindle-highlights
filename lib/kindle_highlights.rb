@@ -1,10 +1,8 @@
 require 'rubygems'
 require 'mechanize'
-require 'json'
-require 'kindle_highlights/client'
+require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/string/filters'
 
-module KindleHighlights  
-  KINDLE_LOGIN_PAGE      = "http://kindle.amazon.com/login"
-  SIGNIN_FORM_IDENTIFIER = "signIn"
-  BATCH_SIZE             = 200
-end
+require_relative './kindle_highlights/client'
+require_relative './kindle_highlights/book'
+require_relative './kindle_highlights/highlight'
