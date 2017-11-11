@@ -9,10 +9,6 @@ A Ruby gem for collecting your Kindle highlights.
 * Ruby `2.1.0` or greater
 * An Amazon Kindle account
 
-<b>Note:</b> Version `0.0.8` of `kindle-highlights` is the last version which is compatible with older
-versions of Ruby. For documentation on how to use that
-version, see [the release](https://github.com/speric/kindle-highlights/releases/tag/v0.0.8).
-
 ### Install
 ```
 gem install kindle-highlights
@@ -26,63 +22,62 @@ to sign into your Amazon Kindle account:
 ```ruby
 require 'kindle_highlights'
 
-kindle = KindleHighlights::Client.new(email_address: "email.address@gmail.com", password: "password")
+kindle = KindleHighlights::Client.new(
+  email_address: "email.address@gmail.com",
+  password: "password"
+)
 ```
 
 ### Fetching a list of your Kindle books
 
 Use the `books` method to get a listing of all your Kindle books. This method
-returns a hash, keyed on the ASIN, with the title as the value:
+returns a collection of `KindleHighlights::Book` objects:
 
 ```ruby
 kindle.books
 #=>
-{
-  "B002JCSCO8" => "The Art of the Commonplace: The Agrarian Essays of Wendell Berry",
-  "B0049SPHC0" => "Calvinistic Concept of Culture, The",
-  "B003HNOB34" => "The Collected Works of William Butler Yeats (Unexpurgated Edition) (Halcyon Classics)",
-  "B000JMKZX6" => "The Essays of Arthur Schopenhauer; On Human Nature",
-  "B005CQ2ZE6" => "From the Garden to the City",
-  "B0082ZJFCO" => "The Golden Sayings of Epictetus",
-  "B000SEGEKI" => "The Pragmatic Programmer: From Journeyman to Master",
-  "B009D6AGOM" => "The Rare Jewel of Christian Contentment",
-  "B00E25KVLW" => "Ruby on Rails 4.0 Guide",
-  "B004X5RLBY" => "The Seven Lamps of Architecture",
-  "B0032UWX1O" => "The Westminster Confession of Faith",
-  "B0026772N8" => "Zen and the Art of Motorcycle Maintenance"
-}
+[
+  <KindleHighlights::Book:
+      @asin="B000XUAETY",
+      @author="James R. Mcdonough",
+      @title="Platoon Leader: A Memoir of Command in Combat"
+  >,
+  <KindleHighlights::Book:
+    @asin="B003XDUCEU",
+    @author="Michael Lopp",
+    @title="Being Geek: The Software Developer's Career Handbook"
+  >,
+  <KindleHighlights::Book:
+    @asin="B00JJ1RIO2",
+    @author="James K. A. Smith",
+    @title="How (Not) to Be Secular: Reading Charles Taylor"
+  >
+]
 ```
 
 ### Fetching all highlights for a single book
 
 To get only the highlights for a specific book, use the `highlights_for` method, passing
-in the book's Amazon ASIN as the only method parameter:
+in the book's Amazon ASIN as the only method parameter. This method returns a collection of
+`KindleHighlights::Highlight` objects:
 
 ```ruby
 kindle.highlights_for("B005CQ2ZE6")
 #=>
 [
-  {
-    "asin"          => "B005CQ2ZE6",
-    "customerId"    => "...",
-    "embeddedId"    => "From_the_Garden_to_the_City:420E805A",
-    "endLocation"   => 29591,
-    "highlight"     => "One of the most dangerous things you can believe in this world is that technology is neutral.",
-    "howLongAgo"    => "1 year ago",
-    "startLocation" => 29496,
-    "timestamp"     => 1320901233000
-  },
-  {
-    "asin"          => "B005CQ2ZE6",
-    "customerId"    => "...",
-    "embeddedId"    => "From_the_Garden_to_the_City:420E805A",
-    "endLocation"   => 54220,
-    "highlight"     => "While God's words are eternal and unchanging, the tools we use to access those words do change, and those changes in technology also bring subtle changes to the practice of worship. When we fail to recognize the impact of such technological change, we run the risk of allowing our tools to dictate our methods. Technology should not dictate our values or our methods. Rather, we must use technology out of our convictions and values.",
-    "howLongAgo"    => "1 year ago",
-    "startLocation" => 53780,
-    "timestamp"     => 1321038422000
-  }
+  <KindleHighlights::Highlight:0x007fc4e7e03ea0
+    @asin="B005CQ2ZE6",
+    @text="One of the most dangerous things you can believe in this world is that technology is neutral.",
+    @location="197"
+  >
 ]
+```
+
+Additionally, each book has it's own `highlights_from_amazon` method:
+
+```
+book = kindle.books.first
+book.highlights_from_amazon
 ```
 
 ### Advanced Usage
@@ -138,4 +133,4 @@ kindle = KindleHighlights::Client.new(
 
 ### Copyright
 
-Copyright (c) 2011-2016 Eric Farkas. See MIT-LICENSE for details.
+Copyright (c) 2011-2018 Eric Farkas. See MIT-LICENSE for details.

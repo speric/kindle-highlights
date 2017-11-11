@@ -2,3 +2,5 @@
 .gemspec
 config/*.yml
 .DS_Store
+application.yml
+Gemfile.lock
