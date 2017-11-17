@@ -55,6 +55,18 @@ kindle.books
 ]
 ```
 
+Each `Book` object has it's `asin`, `author`, and `title` as attributes:
+
+```ruby
+book = kindle.books.first
+book.asin
+#=> "B000XUAETY"
+book.author
+#=> "James R. Mcdonough"
+book.title
+#=> "Platoon Leader: A Memoir of Command in Combat"
+```
+
 ### Fetching all highlights for a single book
 
 To get only the highlights for a specific book, use the `highlights_for` method, passing
@@ -71,6 +83,19 @@ kindle.highlights_for("B005CQ2ZE6")
     @location="197"
   >
 ]
+```
+
+Each `Highlight` object has the book's `asin`, the `text` of the highlight, and it's `location` as attributes:
+
+```ruby
+highlight = kindle.highlights_for("B005CQ2ZE6").first
+
+highlight.asin
+#=> "B005CQ2ZE6"
+highlight.text
+#=> "One of the most dangerous things you can believe in this world is that technology is neutral."
+highlight.location
+#=> "197"
 ```
 
 Additionally, each book has it's own `highlights_from_amazon` method:
