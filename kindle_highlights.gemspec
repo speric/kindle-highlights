@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.1.0"
 
   s.add_runtime_dependency "mechanize", ">= 2.7.5"
+  s.add_runtime_dependency "activesupport"
   s.add_development_dependency "rake"
   s.add_development_dependency "bundler",  "~> 1.3"
   s.add_development_dependency "minitest", "~> 5.0"
-  s.add_development_dependency "activesupport"
 end
