@@ -4,7 +4,6 @@ module KindleHighlights
     class AuthenticationError < StandardError; end
     class AsinNotFoundError < StandardError; end
 
-    KINDLE_LOGIN_PAGE      = "https://read.amazon.com/notebook"
     SIGNIN_FORM_IDENTIFIER = "signIn"
     MAX_AUTH_RETRIES       = 2
 
@@ -83,7 +82,7 @@ module KindleHighlights
     end
 
     def login_via_mechanize
-      signin_page = mechanize_agent.get(KINDLE_LOGIN_PAGE)
+      signin_page = mechanize_agent.get("#{KindleHighlights::KINDLE_ROOT}/notebook")
       signin_form = signin_page.form(SIGNIN_FORM_IDENTIFIER)
       signin_form.email = email_address
       signin_form.password = password

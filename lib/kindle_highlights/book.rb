@@ -38,7 +38,7 @@ module KindleHighlights
 
     def fetch_highlights_from_amazon
       mechanize_agent
-        .get("https://read.amazon.com/kp/notebook?captcha_verified=1&asin=#{asin}&contentLimitState=&")
+        .get("#{KindleHighlights::KINDLE_ROOT}/kp/notebook?captcha_verified=1&asin=#{asin}&contentLimitState=&")
         .search("div#kp-notebook-annotations")
         .children
         .select { |child| child.name == "div" }
