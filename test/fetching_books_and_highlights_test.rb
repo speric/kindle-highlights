@@ -100,7 +100,7 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
               <div class="a-column a-span10 a-spacing-small kp-notebook-print-override">
                 <div id="highlight-QUdPVFNVM0E3Vk1PQzpCMDAwWFVBRVRZOjQ1ODIwOkhJR0hMSUdIVA==" class="a-row kp-notebook-highlight kp-notebook-selectable kp-notebook-highlight-yellow">
                   <span id="annotationHighlightHeader">
-                    Yellow highlight | Page: 52
+                    Yellow highlight | Page: 7
                   </span>
                   <span id="highlight" class="a-size-base-plus a-color-base">
                     Destiny is not born of decision; it is born of uncontrollable circumstances.
