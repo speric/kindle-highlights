@@ -95,19 +95,20 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
     <div class="a-column a-span10 kp-notebook-row-separator">
       <div class="a-row">
         <input type="hidden" name="" value="306" id="kp-annotation-location">
+        <div class="a-column a-span8">
+          <span id="annotationHighlightHeader">Yellow highlight | Page: 7</span>
+        </div>
         <div class="a-column a-span4 a-text-right a-span-last">
             <div class="a-row a-spacing-top-medium">
               <div class="a-column a-span10 a-spacing-small kp-notebook-print-override">
                 <div id="highlight-QUdPVFNVM0E3Vk1PQzpCMDAwWFVBRVRZOjQ1ODIwOkhJR0hMSUdIVA==" class="a-row kp-notebook-highlight kp-notebook-selectable kp-notebook-highlight-yellow">
-                  <span id="annotationHighlightHeader">
-                    Yellow highlight | Page: 7
-                  </span>
                   <span id="highlight" class="a-size-base-plus a-color-base">
                     Destiny is not born of decision; it is born of uncontrollable circumstances.
                   </span>
-                  <span id="note">
-                    This is a note!
-                  </span>
+                </div>
+                <div id="note-" class="a-row a-spacing-top-base kp-notebook-note aok-hidden kp-notebook-selectable">
+                  <span id="note-label" class="a-size-small a-color-secondary">Note:</span>
+                  <span id="note" class="a-size-base-plus a-color-base">This is a note!</span>
                 </div>
               </div>
             </div>
