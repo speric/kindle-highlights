@@ -7,7 +7,7 @@ module KindleHighlights
         asin: book.asin,
         text: html_elements.children.search("div.kp-notebook-highlight").first.text.squish,
         note: html_elements.children.search("span#note").first.text,
-        page: html_elements.children.search("span#annotationHighlightHeader").first.text.partition('|').last.lstrip.chop,
+        page: html_elements.children.search("span#annotationHighlightHeader").first.text.partition('|').last.lstrip,
         location: html_elements.children.search("input#kp-annotation-location").first.attributes["value"].value,
       )
     end
