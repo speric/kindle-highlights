@@ -12,7 +12,7 @@ def sanitize_filename(filename) #Function to remove invalid symbols from filenam
   return fn.join '.'
 end
 
-kindle = KindleHighlights::Client.new(
+kindle = KindleHighlights::Client.new(  #Add amazon login details below
   email_address: "aaa@aaa.com",
   password: "password"
   )
