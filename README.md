@@ -155,6 +155,7 @@ kindle = KindleHighlights::Client.new(
 
 ### In The Wild
 * [tobi/highlights](https://github.com/tobi/highlights) - Download your Kindle highlights and email random ones to your inbox
+* These is an example script ('/examples/Kindle2Folder.rb') which can be used to download all your highlights to a collection of .txt files in markdown format.
 
 ### Contributing to kindle-highlights (PRs welcome)
 
