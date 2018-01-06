@@ -1,5 +1,5 @@
 # Kindle2Folder.rb Script
-# This example script uses the kindle-highlights code to create a seperate .txt file for each book in your collection in the 
+# This example script uses the kindle-highlights script to create a seperate .txt file for each book in your collection in the 
 # Amazon Kindle Notebook.  Each file contains the name of the book and author, and then adds each highlight below it with the 
 # page number/location and any associated notes.  Finally it adds a link to the highlight in the desktop version of the kindle 
 # app using the "kindle://" url scheme.
