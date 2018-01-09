@@ -34,7 +34,7 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
     assert_equal "306", highlight.location
     assert_equal "Destiny is not born of decision; it is born of uncontrollable circumstances.", highlight.text
     assert_equal "B000XUAETY", highlight.asin
-    assert_equal "Page: 7", highlight.page
+    assert_equal "7", highlight.page
     assert_equal "This was an inspiring quote", highlight.note
   end
 
