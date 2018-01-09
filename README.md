@@ -66,7 +66,7 @@ book.author
 book.title
 #=> "Platoon Leader: A Memoir of Command in Combat"
 book.page
-#=> "Page: 7"
+#=> "7"
 book.note
 #=> "This was an inspiring quote"
 ```
@@ -85,13 +85,13 @@ kindle.highlights_for("B005CQ2ZE6")
     @asin="B005CQ2ZE6",
     @text="One of the most dangerous things you can believe in this world is that technology is neutral.",
     @location="197"
-    @page="Page:7"
+    @page="7"
     @note="This was an inspiring quote"
   >
 ]
 ```
 
-Each `Highlight` object has the book's `asin`, the `text` of the highlight, the `page` number if available (it returns "Location: xx" if not available), it's `location`, and any `note` associated with the highlight (this will return _null_ if there is no note) as attributes:
+Each `Highlight` object has the book's `asin`, the `text` of the highlight, the `page` number if available (returns nil if unavailable), its `location`, and any `note` associated with the highlight (this will return _null_ if there is no note) as attributes:
 
 ```ruby
 highlight = kindle.highlights_for("B005CQ2ZE6").first
@@ -101,7 +101,7 @@ highlight.asin
 highlight.text
 #=> "One of the most dangerous things you can believe in this world is that technology is neutral."
 highlight.page
-#=> "Page: 7"
+#=> "7"
 highlight.location
 #=> "197"
 highlight.note
