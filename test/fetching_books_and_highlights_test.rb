@@ -35,7 +35,7 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
     assert_equal "Destiny is not born of decision; it is born of uncontrollable circumstances.", highlight.text
     assert_equal "B000XUAETY", highlight.asin
     assert_equal "Page: 7", highlight.page
-    assert_equal "This is a note!", highlight.note
+    assert_equal "This was an inspiring quote", highlight.note
   end
 
   def test_fetching_highlights_for_a_non_existing_asin
@@ -108,7 +108,7 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
                 </div>
                 <div id="note-" class="a-row a-spacing-top-base kp-notebook-note aok-hidden kp-notebook-selectable">
                   <span id="note-label" class="a-size-small a-color-secondary">Note:</span>
-                  <span id="note" class="a-size-base-plus a-color-base">This is a note!</span>
+                  <span id="note" class="a-size-base-plus a-color-base">This was an inspiring quote</span>
                 </div>
               </div>
             </div>
