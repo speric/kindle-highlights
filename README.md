@@ -55,7 +55,7 @@ kindle.books
 ]
 ```
 
-Each `Book` object has it's `asin`, `author`, `title`, `page` and `note` as attributes:
+Each `Book` object has its `asin`, `author`, `title`, `page` and `note` as attributes:
 
 ```ruby
 book = kindle.books.first
@@ -68,7 +68,7 @@ book.title
 book.page
 #=> "Page: 7"
 book.note
-#=> "This is a note!"
+#=> "This was an inspiring quote"
 ```
 
 ### Fetching all highlights for a single book
@@ -86,7 +86,7 @@ kindle.highlights_for("B005CQ2ZE6")
     @text="One of the most dangerous things you can believe in this world is that technology is neutral.",
     @location="197"
     @page="Page:7"
-    @note="This is a note"
+    @note="This was an inspiring quote"
   >
 ]
 ```
@@ -105,7 +105,7 @@ highlight.page
 highlight.location
 #=> "197"
 highlight.note
-#=> "This is a note"
+#=> "This was an inspiring quote"
 ```
 
 Additionally, each book has it's own `highlights_from_amazon` method:
