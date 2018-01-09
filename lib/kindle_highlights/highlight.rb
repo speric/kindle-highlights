@@ -2,6 +2,14 @@ module KindleHighlights
   class Highlight
     attr_accessor :asin, :text, :note, :page, :location
 
+    def pagenum(page) #Check if lable is for a page number or a location, and only return value if for a page number
+      if page[0]=="P" 
+        return page.partition(':').last.lstrip
+      else
+        return nil
+      end
+    end
+    
     def self.from_html_elements(book:, html_elements:)
       new(
         asin: book.asin,
@@ -16,7 +24,7 @@ module KindleHighlights
       @asin = asin
       @text = text
       @note = note
-      @page = page
+      @page = pagenum(page)
       @location = location
     end
 
