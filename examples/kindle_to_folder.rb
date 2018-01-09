@@ -12,16 +12,16 @@ kindle = KindleHighlights::Client.new(
   password: "password"
 )
 
-folder = File.expand_path('~/Kindle') #Folder you want to store the txt files (in markdown format) in...
+base_folder = File.expand_path('~/Kindle') #Folder you want to store the txt files (in markdown format) in...
 
 kindle.books.each do |book|
-  folder_name = "#{folder}/#{sanitize_filename(book.title)}.txt"
+  folder_name = "#{base_folder}/#{sanitize_filename(book.title)}.txt"
   print book.title+"\r\n" #Print name of Book to console so you can track progress
   bookfile = File.open(folder_name, "w")
     bookfile.puts "# #{book.title} by #{book.author} \r\n" #Header of the Book Title and Author
     book.highlights_from_amazon.each do |highlight|
       bookfile.puts "#{highlight.text}" #Insert Highlighted Text 
-      if page.present? 
+      if highlight.page.present? 
         bookfile.puts "_Page: #{highlight.page}_ \r\n"  #Add the Page Number if available
       else
         bookfile.puts "_Location: #{highlight.location}_ \r\n"  #Add the Location if page isn't available
