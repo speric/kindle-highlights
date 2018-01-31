@@ -1,9 +1,10 @@
 module KindleHighlights
   class Book
-    attr_accessor :asin, :author, :title
+    attr_accessor :asin, :author, :title, :root_url
 
-    def self.from_html_elements(html_element:, mechanize_agent:)
+    def self.from_html_elements(html_element:, root_url:, mechanize_agent:)
       new(
+        root_url: root_url,
         mechanize_agent: mechanize_agent,
         asin: html_element.attributes["id"].value.squish,
         title: html_element.children.search("h2").first.text.squish,
@@ -11,10 +12,11 @@ module KindleHighlights
       )
     end
 
-    def initialize(asin:, author:, title:, mechanize_agent: nil)
+    def initialize(asin:, author:, title:, root_url:, mechanize_agent: nil)
       @asin = asin
       @author = author
       @title = title
+      @root_url = root_url
       @mechanize_agent = mechanize_agent
     end
 
@@ -38,7 +40,7 @@ module KindleHighlights
 
     def fetch_highlights_from_amazon
       mechanize_agent
-        .get("#{KindleHighlights::KINDLE_ROOT}/kp/notebook?captcha_verified=1&asin=#{asin}&contentLimitState=&")
+        .get("#{root_url}/kp/notebook?captcha_verified=1&asin=#{asin}&contentLimitState=&")
         .search("div#kp-notebook-annotations")
         .children
         .select { |child| child.name == "div" }

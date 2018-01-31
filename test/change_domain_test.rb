@@ -1,11 +1,12 @@
 require 'kindle_highlights'
 require 'minitest/autorun'
 
-class FetchingBooksAndHighlightsTest < Minitest::Test
+class ChangeDomainTest < Minitest::Test
   def setup
     @kindle = KindleHighlights::Client.new(
       email_address: "amazon@example.com",
-      password: "letmein"
+      password: "letmein",
+      root_url: "https://read.amazon.co.example"
     )
     @kindle.mechanize_agent = FakeMechanizeAgent.new
     @kindle.kindle_logged_in_page = Mechanize::Page.new(
@@ -17,30 +18,12 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
     )
   end
 
-  def test_fetching_books_from_kindle_account
-    assert_equal 1, @kindle.books.count
-
-    book = @kindle.books.first
-    assert_equal "B000XUAETY", book.asin
-    assert_equal "James R. Mcdonough", book.author
-    assert_equal "Platoon Leader: A Memoir of Command in Combat", book.title
-    assert_equal "https://read.amazon.com", book.root_url
+  def test_client_root_url
+    assert_equal "https://read.amazon.co.example", @kindle.root_url
   end
 
-  def test_fetching_highlights_for_a_book
-    highlights = @kindle.highlights_for("B000XUAETY")
-    assert_equal 1, highlights.count
-
-    highlight = highlights.first
-    assert_equal "306", highlight.location
-    assert_equal "Destiny is not born of decision; it is born of uncontrollable circumstances.", highlight.text
-    assert_equal "B000XUAETY", highlight.asin
-  end
-
-  def test_fetching_highlights_for_a_non_existing_asin
-    assert_raises KindleHighlights::Client::AsinNotFoundError do
-      @kindle.highlights_for("BADASIN")
-    end
+  def test_book_root_url
+    assert_equal "https://read.amazon.co.example", @kindle.books.first.root_url
   end
 
   def raw_signin_page
