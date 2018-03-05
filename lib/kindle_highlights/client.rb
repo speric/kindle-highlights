@@ -4,18 +4,20 @@ module KindleHighlights
     class AuthenticationError < StandardError; end
     class AsinNotFoundError < StandardError; end
 
-    KINDLE_LOGIN_PAGE      = "https://read.amazon.com/notebook"
     SIGNIN_FORM_IDENTIFIER = "signIn"
     MAX_AUTH_RETRIES       = 2
 
     attr_writer :mechanize_agent, :kindle_logged_in_page
+    attr_reader :root_url, :kindle_login_page
 
-    def initialize(email_address:, password:, mechanize_options: {})
+    def initialize(email_address:, password:, root_url: "https://read.amazon.com", mechanize_options: {})
       @email_address = email_address
       @password = password
       @mechanize_options = mechanize_options
       @retries = 0
       @kindle_logged_in_page = nil
+      @root_url = root_url
+      @kindle_login_page = "#{@root_url}/notebook"
     end
 
     def books
@@ -55,7 +57,7 @@ module KindleHighlights
 
       kindle_library.map do |book|
         unless book.attributes["id"].blank?
-          Book.from_html_elements(html_element: book, mechanize_agent: mechanize_agent)
+          Book.from_html_elements(html_element: book, mechanize_agent: mechanize_agent, root_url: root_url)
         end
       end.compact
     end
@@ -83,7 +85,7 @@ module KindleHighlights
     end
 
     def login_via_mechanize
-      signin_page = mechanize_agent.get(KINDLE_LOGIN_PAGE)
+      signin_page = mechanize_agent.get(@kindle_login_page)
       signin_form = signin_page.form(SIGNIN_FORM_IDENTIFIER)
       signin_form.email = email_address
       signin_form.password = password

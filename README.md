@@ -117,6 +117,16 @@ kindle = KindleHighlights::Client.new(
 )
 ```
 
+Or you can use `read.amazon.com` equivalents provided on other TLDs like:
+
+```ruby
+kindle = KindleHighlights::Client.new(
+  email_address: "me@example.com",
+  password: "amazon_password",\
+  root_url: 'https://read.amazon.co.jp'
+)
+```
+
 ### A Note About CAPTCHAs
 
 Amazon will sometimes issue a CAPTCHA challenge when logging in to your
