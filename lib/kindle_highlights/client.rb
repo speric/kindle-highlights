@@ -2,6 +2,7 @@ module KindleHighlights
   class Client
     class CaptchaError < StandardError; end
     class AuthenticationError < StandardError; end
+    class ConfirmationError < StandardError; end
     class AsinNotFoundError < StandardError; end
 
     SIGNIN_FORM_IDENTIFIER = "signIn"
@@ -72,6 +73,9 @@ module KindleHighlights
         elsif post_signin_page.search("#message_error > p").any?
           amazon_error = post_signin_page.search("#message_error > p").children.first.to_s.strip
           raise AuthenticationError, "Unable to sign in, received error: '#{amazon_error}'"
+        elsif post_signin_page.title == "Please confirm your identity"
+          confirmation_url = post_signin_page.uri.to_s 
+          raise ConfirmationError, "Received a confirmation request while attempting to sign in to your Amazon account. You will need to resolve this manually at #{confirmation_url}"
         else
           @kindle_logged_in_page = post_signin_page
         end
