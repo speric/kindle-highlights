@@ -66,7 +66,7 @@ module KindleHighlights
       if login?
         post_signin_page = login_via_mechanize
 
-        if post_signin_page.search("#ap_captcha_img").any?
+        if post_signin_page.search("#auth-captcha-image").any?
           resolution_url = post_signin_page.link_with(text: /See a new challenge/).resolved_uri.to_s
           raise CaptchaError, "Received a CAPTCHA while attempting to sign in to your Amazon account. You will need to resolve this manually at #{resolution_url}"
         elsif post_signin_page.search("#message_error > p").any?
