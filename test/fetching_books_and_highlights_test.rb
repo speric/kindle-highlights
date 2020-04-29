@@ -35,6 +35,8 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
     assert_equal "306", highlight.location
     assert_equal "Destiny is not born of decision; it is born of uncontrollable circumstances.", highlight.text
     assert_equal "B000XUAETY", highlight.asin
+    assert_equal "Page: 7", highlight.page
+    assert_equal "This is a note!", highlight.note
   end
 
   def test_fetching_highlights_for_a_non_existing_asin
@@ -94,6 +96,9 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
     <div class="a-column a-span10 kp-notebook-row-separator">
       <div class="a-row">
         <input type="hidden" name="" value="306" id="kp-annotation-location">
+        <div class="a-column a-span8">
+          <span id="annotationHighlightHeader">Yellow highlight | Page: 7</span>
+        </div>
         <div class="a-column a-span4 a-text-right a-span-last">
             <div class="a-row a-spacing-top-medium">
               <div class="a-column a-span10 a-spacing-small kp-notebook-print-override">
@@ -101,6 +106,10 @@ class FetchingBooksAndHighlightsTest < Minitest::Test
                   <span id="highlight" class="a-size-base-plus a-color-base">
                     Destiny is not born of decision; it is born of uncontrollable circumstances.
                   </span>
+                </div>
+                <div id="note-" class="a-row a-spacing-top-base kp-notebook-note aok-hidden kp-notebook-selectable">
+                  <span id="note-label" class="a-size-small a-color-secondary">Note:</span>
+                  <span id="note" class="a-size-base-plus a-color-base">This is a note!</span>
                 </div>
               </div>
             </div>
